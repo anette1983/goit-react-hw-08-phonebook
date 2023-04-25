@@ -14,7 +14,7 @@ const styles = {
   },
 };
 
-export const Login = () => {
+const Login = () => {
   // тут будет форма из чакри
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
@@ -73,3 +73,5 @@ export const Login = () => {
     </HelmetProvider>
   );
 };
+
+export default Login;

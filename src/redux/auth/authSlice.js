@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import { fetchContacts, addContact, deleteContact } from './operations';
 import { register, login, logout } from 'redux/auth/operations';
 const authInitialState = {
   user: { name: null, email: null },

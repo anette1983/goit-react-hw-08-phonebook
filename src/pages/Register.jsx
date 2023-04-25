@@ -15,7 +15,7 @@ const styles = {
 };
 
 // винести форму в окремий компонент!!!
-export const Register = () => {
+const Register = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -87,3 +87,5 @@ export const Register = () => {
     </HelmetProvider>
   );
 };
+
+export default Register;
