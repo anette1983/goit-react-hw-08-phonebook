@@ -1,21 +1,34 @@
-// import { useDispatch } from 'react-redux';
-// import { logOut } from 'redux/auth/operations';
-import { useAuth } from 'hooks';
-import css from './UserMenu.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from 'redux/auth/operations';
+// import { useAuth } from 'hooks';
+import { selectAuth } from 'redux/auth/selectors';
+
+const styles = {
+  wrapper: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+  },
+  name: {
+    fontWeight: '700',
+    marginRight: '12',
+  },
+};
 
 export const UserMenu = () => {
-  //   const dispatch = useDispatch();
-  const { user } = useAuth();
+  const dispatch = useDispatch();
+  //   const { user } = useAuth();
+  const { user } = useSelector(selectAuth);
+  // const name = useSelector(selectUserName);
 
   return (
-    <div className={css.wrapper}>
-      <p className={css.username}>Welcome, {user.name}</p>
-      <button
-        type="button"
-        //   onClick={() => dispatch(logOut())}
-      >
+    <div style={styles.wrapper}>
+      <p style={styles.name}>Welcome, {user.name}</p>
+      <button type="button" onClick={() => dispatch(logout())}>
         Logout
       </button>
     </div>
   );
 };
+
+// добавить аватар

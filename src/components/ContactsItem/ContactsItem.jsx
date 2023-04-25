@@ -19,7 +19,7 @@ function ContactsItem({ contact }) {
   return (
     <StyledItem>
       <span>{contact.name}:</span>
-      <span>{contact.phone}</span>
+      <span>{contact.number}</span>
       <StyledButton
         type="button"
         onClick={() => handleDelete(contact.id)}

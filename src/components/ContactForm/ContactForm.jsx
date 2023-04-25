@@ -8,27 +8,27 @@ import { selectContacts } from 'redux/contacts/selectors';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
   const dispatch = useDispatch();
 
   const { items } = useSelector(selectContacts);
 
   const handleChange = e => {
     const { name, value } = e.target;
-    name === 'name' ? setName(value) : setPhone(value);
+    name === 'name' ? setName(value) : setNumber(value);
   };
 
   const handleSubmit = evt => {
     evt.preventDefault();
     const newContact = {
       name,
-      phone,
+      number,
     };
     const normalizedName = newContact.name.toLowerCase();
     const contactsIncludes = items.find(
       contact =>
         contact.name.toLowerCase() === normalizedName ||
-        contact.phone === newContact.phone
+        contact.number === newContact.number
     );
     if (contactsIncludes) {
       return toast.error(`${newContact.name} is already in contacts`);
@@ -41,7 +41,7 @@ const ContactForm = () => {
 
   const reset = () => {
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -64,7 +64,7 @@ const ContactForm = () => {
           onChange={handleChange}
           type="tel"
           name="number"
-          value={phone}
+          value={number}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required

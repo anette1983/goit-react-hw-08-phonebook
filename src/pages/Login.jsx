@@ -1,6 +1,6 @@
 import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { authOperations } from '../redux/auth';
+import { useDispatch } from 'react-redux';
+import { login } from 'redux/auth/operations';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const styles = {
@@ -16,7 +16,7 @@ const styles = {
 
 export const Login = () => {
   // тут будет форма из чакри
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -33,7 +33,7 @@ export const Login = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // dispatch(authOperations.logIn({ email, password }));
+    dispatch(login({ email, password }));
     setEmail('');
     setPassword('');
   };

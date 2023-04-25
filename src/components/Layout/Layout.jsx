@@ -1,5 +1,9 @@
+import { UserMenu } from 'components/UserMenu/UserMenu';
 import { Suspense } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink, Outlet } from 'react-router-dom';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
+
 // import styled from 'styled-components';
 // import { StyledContainer, StyledHeader, StyledNavLink } from './Layout.styled';
 
@@ -15,16 +19,23 @@ import { NavLink, Outlet } from 'react-router-dom';
 // `;
 
 const Layout = () => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <>
       <header>
         <nav>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/contacts">Contacts</NavLink>
           <div>
-            <NavLink to="/register">Register</NavLink>
-            <NavLink to="/login">Log in</NavLink>
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/contacts">Contacts</NavLink>
           </div>
+          {isLoggedIn ? (
+            <UserMenu />
+          ) : (
+            <div>
+              <NavLink to="/register">Register</NavLink>
+              <NavLink to="/login">Log in</NavLink>
+            </div>
+          )}
         </nav>
       </header>
       <div>
