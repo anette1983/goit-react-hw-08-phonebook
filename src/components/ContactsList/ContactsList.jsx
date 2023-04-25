@@ -6,8 +6,8 @@ import {
   // selectFilteredContacts,
   selectIsLoading,
   selectFilteredAndSortedContacts,
-} from 'redux/selectors';
-import { fetchContacts } from 'redux/operations';
+} from 'redux/contacts/selectors';
+import { fetchContacts } from 'redux/contacts/operations';
 import ContactsItem from 'components/ContactsItem/ContactsItem';
 
 function ContactsList() {
