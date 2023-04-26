@@ -18,8 +18,10 @@ function ContactsItem({ contact }) {
 
   return (
     <StyledItem>
-      <span>{contact.name}:</span>
-      <span>{contact.number}</span>
+      <div>
+        <span>{contact.name}:</span>
+        <span>{contact.number}</span>
+      </div>
       <StyledButton
         type="button"
         onClick={() => handleDelete(contact.id)}

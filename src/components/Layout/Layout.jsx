@@ -1,53 +1,20 @@
-import { UserMenu } from 'components/UserMenu/UserMenu';
+import { AppBar } from 'components/AppBar/AppBar';
 import { Suspense } from 'react';
-import { useSelector } from 'react-redux';
-import { NavLink, Outlet } from 'react-router-dom';
-import { selectIsLoggedIn } from 'redux/auth/selectors';
+import { Outlet } from 'react-router-dom';
+import { StyledContainer, StyledSection } from './Layout.styled';
 
-// import styled from 'styled-components';
-// import { StyledContainer, StyledHeader, StyledNavLink } from './Layout.styled';
-
-// const StyledNavLink = styled(NavLink)`
-//   color: #212121;
-//   font-size: 22px;
-//   display: block;
-//   padding-top: 16px;
-//   padding-bottom: 16px;
-//   &.active {
-//     color: red;
-//   }
-// `;
-
-const Layout = () => {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
+export const Layout = () => {
   return (
-    <>
-      <header>
-        <nav>
-          <div>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/contacts">Contacts</NavLink>
-          </div>
-          {isLoggedIn ? (
-            <UserMenu />
-          ) : (
-            <div>
-              <NavLink to="/register">Register</NavLink>
-              <NavLink to="/login">Log in</NavLink>
-            </div>
-          )}
-        </nav>
-      </header>
-      <div>
-        <main>
+    <StyledContainer>
+      <AppBar />
+      <main>
+        <StyledSection>
           <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
           </Suspense>
-        </main>
-        <footer></footer>
-      </div>
-    </>
+        </StyledSection>
+      </main>
+      <footer></footer>
+    </StyledContainer>
   );
 };
-
-export default Layout;
