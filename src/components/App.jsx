@@ -7,7 +7,6 @@ import { refreshUser } from 'redux/auth/operations';
 import { selectAuth } from 'redux/auth/selectors';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
-import { startTransition } from 'react';
 
 const Home = lazy(() => import('../pages/Home.jsx'));
 const Register = lazy(() => import('../pages/Register.jsx'));
