@@ -1,10 +1,13 @@
 import { lazy, useEffect } from 'react';
 
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from 'redux/auth/operations';
 import { selectAuth } from 'redux/auth/selectors';
+import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute';
+import { startTransition } from 'react';
 
 const Home = lazy(() => import('../pages/Home.jsx'));
 const Register = lazy(() => import('../pages/Register.jsx'));
@@ -25,11 +28,27 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="register" element={<Register />} />
-        <Route path="login" element={<Login />} />
-        <Route path="contacts" element={<Contacts />} />
+        <Route
+          path="register"
+          element={
+            <RestrictedRoute component={Register} redirectTo="/contacts" />
+          }
+        />
+        <Route
+          path="login"
+          element={<RestrictedRoute component={Login} redirectTo="/contacts" />}
+        />
+        <Route
+          path="contacts"
+          element={<PrivateRoute component={Contacts} redirectTo="/" />}
+        />
       </Route>
-      <Route path="*" element={<Layout />} />
+      <Route
+        path="*"
+        // element={<Home />}
+        // component={Home}
+        element={<Navigate to="/" />}
+      />
     </Routes>
   );
 };
