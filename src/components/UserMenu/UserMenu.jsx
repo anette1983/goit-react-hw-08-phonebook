@@ -2,8 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from 'redux/auth/operations';
 // import { useAuth } from 'hooks';
 import { selectAuth } from 'redux/auth/selectors';
-import { StyledUserWrapper } from './UserMenu.styled';
-import StyledButton from 'components/Button.styled';
+import { ColoredButton, StyledUserWrapper } from './UserMenu.styled';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
@@ -14,9 +13,16 @@ export const UserMenu = () => {
   return (
     <StyledUserWrapper>
       <p>Welcome, {user.name}</p>
-      <StyledButton type="button" onClick={() => dispatch(logout())}>
+      <ColoredButton
+        sx={{ color: 'rgb(42, 54, 59)', border: '1px solid rgb(42, 54, 59)' }}
+        size="medium"
+        type="button"
+        variant="outlined"
+        // size="large"
+        onClick={() => dispatch(logout())}
+      >
         Logout
-      </StyledButton>
+      </ColoredButton>
     </StyledUserWrapper>
   );
 };

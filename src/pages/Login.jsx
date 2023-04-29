@@ -1,5 +1,6 @@
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { LoginForm } from 'components/LoginForm/LoginForm';
+import { StyledContainer } from './Home.styled';
 
 const Login = () => {
   // тут будет форма из чакри
@@ -10,7 +11,7 @@ const Login = () => {
         <Helmet>
           <title>Login</title>
         </Helmet>
-        <LoginForm />
+        <StyledContainer><LoginForm /></StyledContainer>
       </div>
     </HelmetProvider>
   );

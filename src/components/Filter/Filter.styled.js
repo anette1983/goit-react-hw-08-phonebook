@@ -7,11 +7,11 @@ const StyledFilter = styled.label`
   width: 325px;
 
   & input {
-    padding: 6px;
+    /* padding: 6px;
     margin-top: 10px;
     font-family: inherit;
     border: 1px solid rgba(33, 33, 33, 0.2);
-    border-radius: 4px;
+    border-radius: 4px; */
   }
 `;
 

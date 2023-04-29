@@ -1,27 +1,42 @@
-const styles = {
-  container: {
-    minHeight: 'calc(100vh - 50px)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontWeight: 500,
-    fontSize: 48,
-    textAlign: 'center',
-  },
-};
+import { useNavigate } from 'react-router-dom';
+import {
+  ColoredButton,
+  StyledButtonDiv,
+  StyledContainer,
+  StyledHeader,
+} from './Home.styled';
+import { useSelector } from 'react-redux';
+import { selectAuth } from 'redux/auth/selectors';
 
 const Home = () => {
+  const { isLoggedIn } = useSelector(selectAuth);
+  const navigate = useNavigate();
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>
-        Home{' '}
-        {/* <span role="img" aria-label="Иконка приветствия">
-          💁‍♀️
-        </span> */}
-      </h1>
-    </div>
+    <StyledContainer>
+      <StyledHeader>Phonebook</StyledHeader>
+      {!isLoggedIn && (
+        <StyledButtonDiv>
+          <ColoredButton
+            variant="contained"
+            size="large"
+            onClick={() => {
+              navigate('/login');
+            }}
+          >
+            Log In
+          </ColoredButton>
+          <ColoredButton
+            variant="contained"
+            size="large"
+            onClick={() => {
+              navigate('/register');
+            }}
+          >
+            Register
+          </ColoredButton>
+        </StyledButtonDiv>
+      )}
+    </StyledContainer>
   );
 };
 

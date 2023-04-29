@@ -6,7 +6,7 @@ import StyledForm from './ContactForm.styled';
 import StyledButton from 'components/Button.styled';
 import { selectContacts } from 'redux/contacts/selectors';
 
-const ContactForm = () => {
+const ContactForm = ({ handleClose }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
@@ -35,6 +35,7 @@ const ContactForm = () => {
     }
 
     dispatch(addContact(newContact));
+    handleClose();
 
     reset();
   };

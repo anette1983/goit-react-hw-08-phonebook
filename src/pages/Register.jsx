@@ -1,5 +1,6 @@
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { StyledContainer } from './Home.styled';
 
 const Register = () => {
   return (
@@ -8,7 +9,9 @@ const Register = () => {
         <Helmet>
           <title>Registration</title>
         </Helmet>
-        <RegisterForm />
+        <StyledContainer>
+          <RegisterForm />
+        </StyledContainer>
       </div>
     </HelmetProvider>
   );
