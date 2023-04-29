@@ -1,23 +1,10 @@
 import * as React from 'react';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
-import ImageIcon from '@mui/icons-material/Image';
-import WorkIcon from '@mui/icons-material/Work';
-import BeachAccessIcon from '@mui/icons-material/BeachAccess';
-import Divider from '@mui/material/Divider';
 
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
-import StyledList from './ContactsList.styled';
-import {
-  // selectError,
-  // selectIsLoading,
-  selectFilteredAndSortedContacts,
-} from 'redux/contacts/selectors';
-// import { fetchContacts } from 'redux/contacts/operations';
+import { selectFilteredAndSortedContacts } from 'redux/contacts/selectors';
+
 import ContactsItem from 'components/ContactsItem/ContactsItem';
 
 function ContactsList() {
