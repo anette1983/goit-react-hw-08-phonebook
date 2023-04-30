@@ -6,7 +6,6 @@ import StyledForm from 'components/ContactForm/ContactForm.styled';
 import { StyledLabel } from 'components/LoginForm/LoginForm.styled';
 import StyledButton from 'components/Button.styled';
 import { selectAuth } from 'redux/auth/selectors';
-import Loader from 'components/Loader/Loader';
 import { CircularProgress } from '@mui/material';
 
 export const LoginForm = () => {
