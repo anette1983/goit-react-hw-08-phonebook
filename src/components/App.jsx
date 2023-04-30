@@ -18,7 +18,6 @@ export const App = () => {
   const { isRefreshing } = useSelector(selectAuth);
   useEffect(() => {
     dispatch(refreshUser());
-    console.log('refreshed :>> ');
   }, [dispatch]);
 
   return isRefreshing ? (

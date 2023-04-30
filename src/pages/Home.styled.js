@@ -35,6 +35,7 @@ export const StyledHeaderWrap = styled.div`
   color: #ffffff;
   p {
     font-size: 18px;
+    text-align: center;
     @media screen and (max-width: 768px) {
       text-align: center;
       font-size: 22px;

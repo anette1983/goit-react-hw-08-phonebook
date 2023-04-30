@@ -1,15 +1,8 @@
 import axios from 'axios';
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
-// const token = {
-//   set(token) {
-//     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-//   },
-//   unset() {
-//     axios.defaults.headers.common.Authorization = '';
-//   },
-// };
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -31,6 +24,7 @@ export const register = createAsyncThunk(
       setAuthHeader(data.token);
       return data;
     } catch (error) {
+      toast.error(`Something went wrong! ${error.message}`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -42,8 +36,10 @@ export const login = createAsyncThunk(
     try {
       const { data } = await axios.post('/users/login', credentials);
       setAuthHeader(data.token);
+
       return data;
     } catch (error) {
+      toast.error(`Something went wrong! ${error.message}`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -63,11 +59,9 @@ export const refreshUser = createAsyncThunk(
   async (_, thunkAPI) => {
     const { token } = thunkAPI.getState().auth;
     if (!token) {
-      console.log(' токена нет:>> ');
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
     try {
-      console.log('token :>> ', thunkAPI);
       setAuthHeader(token);
       const { data } = await axios.get('/users/current');
       return data;

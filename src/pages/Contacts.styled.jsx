@@ -33,10 +33,7 @@ export const StyledImgWrapper = styled.div`
   /* background-image: url(${girl}); */
   max-height: 100vh;
   max-width: 100vw;
-  border-bottom: 10px solid #ffffff;
-  & img {
-    height: 1620px;
-  }
+
   @media (max-width: 768px) {
     display: none;
   }
