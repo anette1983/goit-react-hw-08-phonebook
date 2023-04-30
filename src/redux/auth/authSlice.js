@@ -25,6 +25,7 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
       })
       .addCase(refreshUser.pending, state => {
+        state.isLoading = true;
         state.isRefreshing = true;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
@@ -34,8 +35,9 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
-      .addCase(refreshUser.rejected, state => {
-        handleRejected();
+      .addCase(refreshUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
         state.isRefreshing = false;
       })
       .addMatcher(
