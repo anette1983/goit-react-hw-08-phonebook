@@ -4,6 +4,7 @@ import {
   StyledButtonDiv,
   StyledContainer,
   StyledHeader,
+  StyledHeaderWrap,
 } from './Home.styled';
 import { useSelector } from 'react-redux';
 import { selectAuth } from 'redux/auth/selectors';
@@ -13,7 +14,10 @@ const Home = () => {
   const navigate = useNavigate();
   return (
     <StyledContainer>
-      <StyledHeader>Phonebook</StyledHeader>
+      <StyledHeaderWrap>
+        <StyledHeader>Phonebook</StyledHeader>
+        <p>ALL YOUR CONTACTS IN ONE PLACE</p>
+      </StyledHeaderWrap>
       {!isLoggedIn && (
         <StyledButtonDiv>
           <ColoredButton

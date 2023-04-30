@@ -26,8 +26,20 @@ export const StyledContainer = styled.div`
     max-width: 100%;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
+  }
+`;
+
+export const StyledHeaderWrap = styled.div`
+  color: #ffffff;
+  p {
+    font-size: 18px;
+    @media screen and (max-width: 768px) {
+      text-align: center;
+      font-size: 22px;
+      margin-bottom: 32px;
+    }
   }
 `;
 
@@ -37,6 +49,7 @@ export const StyledHeader = styled.h1`
   color: #ffffff;
   @media screen and (max-width: 768px) {
     font-size: 65px;
+    text-align: center;
   }
 `;
 

@@ -39,7 +39,7 @@ export const App = () => {
         />
         <Route
           path="contacts"
-          element={<PrivateRoute component={Contacts} redirectTo="/" />}
+          element={<PrivateRoute component={Contacts} redirectTo="/login" />}
         />
       </Route>
       <Route
