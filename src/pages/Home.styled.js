@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import image from '../images/Background-2.png';
+import image from '../images/Background-2.jpg';
 import { NavLink } from 'react-router-dom';
 import { Button } from '@mui/material';
 
