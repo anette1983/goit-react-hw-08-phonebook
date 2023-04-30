@@ -4,7 +4,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from 'redux/auth/operations';
-import { selectAuth } from 'redux/auth/selectors';
+import { selectAuth, selectToken } from 'redux/auth/selectors';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 
@@ -16,10 +16,14 @@ const Contacts = lazy(() => import('../pages/Contacts.jsx'));
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useSelector(selectAuth);
+  const token = useSelector(selectToken);
 
   useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
+    if (token) {
+      dispatch(refreshUser());
+      return;
+    }
+  }, [dispatch, token]);
 
   return isRefreshing ? (
     <b>Fetching user data...</b>

@@ -14,15 +14,19 @@ import {
 import girl from '../images/girl-bg.png';
 import { Typography } from '@mui/material';
 import AddContactModal from '../components/AddContactModal.jsx';
+import { selectToken } from 'redux/auth/selectors';
 
 const Contacts = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const dispatch = useDispatch();
+  const token = useSelector(selectToken);
 
   useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+    if (token) {
+      dispatch(fetchContacts());
+    }
+  }, [dispatch, token]);
 
   return (
     <HelmetProvider>
