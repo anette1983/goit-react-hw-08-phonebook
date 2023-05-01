@@ -38,7 +38,9 @@ export const register = createAsyncThunk(
           // const errorMessage =
           //   error.response.data.errors.password.properties.message;
           // const errorMessage = error.response.data.message;
-          toast.error(`Your password is too short! Minimum 7 characters :)`);
+          toast.error(
+            `Your password is too short! Minimum 7 characters needed :)`
+          );
         }
       } else {
         // If the request fails for some other reason
