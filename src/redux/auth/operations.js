@@ -22,9 +22,28 @@ export const register = createAsyncThunk(
     try {
       const { data } = await axios.post('/users/signup', credentials);
       setAuthHeader(data.token);
+      console.log('data :>> ', data);
+
       return data;
     } catch (error) {
-      toast.error(`Something went wrong! ${error.message}`);
+      // if (error.response.data.errors.password) {
+      if (error.response) {
+        // If the server returns an error response with a message
+        // const errorMessage = error.response.data.message;
+        if (error.response.data.code === 11000) {
+          toast.error(
+            `This email is already taken! Try another one, please :) `
+          );
+        } else {
+          // const errorMessage =
+          //   error.response.data.errors.password.properties.message;
+          // const errorMessage = error.response.data.message;
+          toast.error(`Your password is too short! Minimum 7 characters :)`);
+        }
+      } else {
+        // If the request fails for some other reason
+        toast.error('Something went wrong!');
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -39,7 +58,9 @@ export const login = createAsyncThunk(
 
       return data;
     } catch (error) {
-      toast.error(`Something went wrong! ${error.message}`);
+      toast.error(
+        `Something went wrong! Register first or check your email and password!`
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
