@@ -6,7 +6,6 @@ import { selectAuth } from 'redux/auth/selectors';
 import { StyledAppBar } from './AppBar.styled';
 
 export const AppBar = () => {
-  //   const { isLoggedIn } = useAuth();
   const { isLoggedIn } = useSelector(selectAuth);
 
   return (

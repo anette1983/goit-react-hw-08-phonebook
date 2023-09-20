@@ -15,7 +15,6 @@ const Filter = () => {
 
   return (
     <StyledFilter>
-      {/* Find contacts by name */}
       <TextField
         sx={{ color: 'white' }}
         label="Find contacts by name..."

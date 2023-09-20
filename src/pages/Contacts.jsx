@@ -11,7 +11,7 @@ import {
   StyledFormWrapper,
   StyledImgWrapper,
 } from './Contacts.styled';
-import girl from '../images/girl-bg.png';
+import girl from '../images/girl-bg3.png';
 import { Typography } from '@mui/material';
 import AddContactModal from '../components/AddContactModal.jsx';
 import { selectToken } from 'redux/auth/selectors';
@@ -38,9 +38,7 @@ const Contacts = () => {
           <Typography variant="h4" component="h1" mt={2} mb={2}>
             Your contacts
           </Typography>
-          {/* <h1>Your contacts</h1> */}
           <AddContactModal />
-          {/* <ContactForm /> */}
           <Filter />
           {isLoading && !error && <h3>Request in progress...</h3>}
           {error && <p>{error}</p>}

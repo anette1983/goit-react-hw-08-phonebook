@@ -22,22 +22,16 @@ export const register = createAsyncThunk(
     try {
       const { data } = await axios.post('/users/signup', credentials);
       setAuthHeader(data.token);
-      console.log('data :>> ', data);
 
       return data;
     } catch (error) {
-      // if (error.response.data.errors.password) {
+      console.log('error.response.data.code :>> ', error.response.data.code);
       if (error.response) {
-        // If the server returns an error response with a message
-        // const errorMessage = error.response.data.message;
         if (error.response.data.code === 11000) {
           toast.error(
             `This email is already taken! Try another one, please :) `
           );
         } else {
-          // const errorMessage =
-          //   error.response.data.errors.password.properties.message;
-          // const errorMessage = error.response.data.message;
           toast.error(
             `Your password is too short! Minimum 7 characters needed :)`
           );
@@ -89,6 +83,7 @@ export const refreshUser = createAsyncThunk(
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
+      console.clear();
       return thunkAPI.rejectWithValue(error.message);
     }
   }

@@ -8,7 +8,7 @@ export const StyledUserWrapper = styled.div`
   & > p {
     font-weight: 700;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 425px) {
     flex-direction: column;
     align-items: center;
     justify-content: center;

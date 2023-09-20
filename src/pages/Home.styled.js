@@ -4,14 +4,11 @@ import { NavLink } from 'react-router-dom';
 import { Button } from '@mui/material';
 
 export const StyledContainer = styled.div`
-  /* min-height: 'calc(100vh - 50px)'; */
   min-height: 100vh;
-
   background-image: url(${image});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-
   display: flex;
   align-items: center;
   justify-content: space-around;

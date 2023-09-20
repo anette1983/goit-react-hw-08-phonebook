@@ -7,7 +7,6 @@ import { StyledContainer, StyledSection } from './Layout.styled';
 export const Layout = () => {
   return (
     <StyledContainer>
-      {/* <Header /> */}
       <AppBar />
       <main>
         <StyledSection>

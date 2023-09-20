@@ -1,22 +1,12 @@
 import styled from 'styled-components';
-import image from '../images/Background-2.png';
-import girl from '../images/girl-bg.png';
+import girl from '../images/girl-bg-1.png';
 
 export const StyledContainer = styled.div`
   max-height: 100%;
-
-  /* background-image: url(${image}); */
-  /* background-image: url(${girl}); */
-  /* background-position: right center; */
-
   background-color: #ebc183;
-  /* background-repeat: no-repeat; */
-  /* background-size: contain; */
-
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
-  /* flex-direction: column; */
+  height: 100vh;
   @media (max-width: 768px) {
     max-width: 100%;
     min-height: 100vh;
@@ -25,14 +15,16 @@ export const StyledContainer = styled.div`
     /* background-size: contain; */
     background-size: cover;
     background-attachment: fixed;
-    background-position: center;
+    /* background-position: center; */
+    background-position: center 0;
   }
 `;
 
 export const StyledImgWrapper = styled.div`
-  /* background-image: url(${girl}); */
   max-height: 100vh;
   max-width: 100vw;
+  border-left: 10px solid white;
+  border-right: 10px solid white;
 
   @media (max-width: 768px) {
     display: none;

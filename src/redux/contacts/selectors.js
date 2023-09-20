@@ -6,7 +6,7 @@ export const selectIsLoading = state => state.contacts.isLoading;
 export const selectError = state => state.contacts.error;
 
 export const selectFilteredContacts = state => {
-  const filterQ = selectFilter(state); //'abc'
+  const filterQ = selectFilter(state); 
   const { items } = selectContacts(state);
 
   let filtered = items;

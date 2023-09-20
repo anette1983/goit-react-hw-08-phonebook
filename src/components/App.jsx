@@ -23,6 +23,9 @@ export const App = () => {
       dispatch(refreshUser());
       return;
     }
+    if (!token) {
+      <Navigate to="/login" />;
+    }
   }, [dispatch, token]);
 
   return isRefreshing ? (

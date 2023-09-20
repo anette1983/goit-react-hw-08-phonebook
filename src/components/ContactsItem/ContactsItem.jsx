@@ -30,7 +30,6 @@ function ContactsItem({ contact }) {
       <ListItem
         secondaryAction={
           <IconButton
-            // color='warning'
             edge="end"
             aria-label="delete"
             onClick={() => handleDelete(contact.id)}
@@ -48,9 +47,7 @@ function ContactsItem({ contact }) {
                 ? `https://ui-avatars.com/api/?name=${contact.name[0]}&length=1&background=random&size=262`
                 : 'https://ssl.gstatic.com/s2/oz/images/sge/grey_silhouette.png'
             }
-          >
-            {/* <ImageIcon /> */}
-          </Avatar>
+          ></Avatar>
         </ListItemAvatar>
         <ListItemText primary={contact.name} secondary={contact.number} />
       </ListItem>
