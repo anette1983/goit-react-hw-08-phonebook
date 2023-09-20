@@ -25,21 +25,27 @@ export const register = createAsyncThunk(
 
       return data;
     } catch (error) {
-      console.log('error.response.data.code :>> ', error.response.data.code);
-      if (error.response) {
-        if (error.response.data.code === 11000) {
+      if (error.response.data) {
+        const errorData = error.response.data;
+        if (errorData.code === 11000) {
           toast.error(
             `This email is already taken! Try another one, please :) `
           );
-        } else {
-          toast.error(
-            `Your password is too short! Minimum 7 characters needed :)`
-          );
+        }
+        if (errorData.message.includes('name')) {
+          toast.error('Name is required!');
+        }
+        if (errorData.message.includes('password')) {
+          toast.error('Password should be at least 7 characters long!');
+        }
+        if (errorData.message.includes('Invalid email')) {
+          toast.error('The email format is wrong!');
         }
       } else {
         // If the request fails for some other reason
         toast.error('Something went wrong!');
       }
+
       return thunkAPI.rejectWithValue(error.message);
     }
   }
